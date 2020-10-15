@@ -2,7 +2,7 @@
 Repository for the COMP0035 group coursework
 
 Group members:
-Mazin Abdulmahmood
+Mazin Abdulmahmood \n
 Paul Ho
 Toby Katerbau
 Ben Li
