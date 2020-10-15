@@ -2,10 +2,10 @@
 Repository for the COMP0035 group coursework
 
 Group members:
-Mazin Abdulmahmood \n
-Paul Ho
-Toby Katerbau
-Ben Li
+Mazin Abdulmahmood,
+Paul Ho,
+Toby Katerbau,
+Ben Li,
 Guillaume De Saint Quentin
 
 Please change the content of this README file:
