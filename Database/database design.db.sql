@@ -1,0 +1,56 @@
+BEGIN TRANSACTION;
+DROP TABLE IF EXISTS "user";
+CREATE TABLE IF NOT EXISTS "user" (
+	"ID"	INTEGER NOT NULL UNIQUE,
+	"name"	TEXT NOT NULL,
+	"email"	TEXT NOT NULL,
+	"favourites"	NUMERIC,
+	"admin"	INTEGER NOT NULL,
+	PRIMARY KEY("ID" AUTOINCREMENT)
+);
+DROP TABLE IF EXISTS "favourites";
+CREATE TABLE IF NOT EXISTS "favourites" (
+	"borough_ID"	INTEGER NOT NULL UNIQUE
+);
+DROP TABLE IF EXISTS "data_query";
+CREATE TABLE IF NOT EXISTS "data_query" (
+	"ID"	INTEGER NOT NULL UNIQUE
+);
+DROP TABLE IF EXISTS "location";
+CREATE TABLE IF NOT EXISTS "location" (
+	"dataset_ID"	INTEGER NOT NULL UNIQUE,
+	"borough_ID"	INTEGER NOT NULL UNIQUE
+);
+DROP TABLE IF EXISTS "datasets";
+CREATE TABLE IF NOT EXISTS "datasets" (
+	"dataset_ID"	INTEGER NOT NULL UNIQUE,
+	"average_rent_ID"	INTEGER NOT NULL UNIQUE,
+	"crime_rate_ID"	INTEGER NOT NULL UNIQUE,
+	"population_space_ID"	INTEGER NOT NULL UNIQUE,
+	"transport_links_ID"	INTEGER NOT NULL UNIQUE,
+	"green_space_ID"	INTEGER NOT NULL UNIQUE,
+	"pollution_ID"	INTEGER NOT NULL UNIQUE
+);
+DROP TABLE IF EXISTS "preferences";
+CREATE TABLE IF NOT EXISTS "preferences" (
+	"ID"	INTEGER NOT NULL UNIQUE,
+	"number_of_bedrooms"	INTEGER NOT NULL,
+	"university"	TEXT NOT NULL,
+	"max_price"	INTEGER NOT NULL,
+	"min_price"	INTEGER NOT NULL,
+	"allergies"	INTEGER NOT NULL,
+	"residential"	INTEGER NOT NULL
+);
+DROP TABLE IF EXISTS "housing_prices_dataset";
+CREATE TABLE IF NOT EXISTS "housing_prices_dataset" (
+	"average_rent_ID"	INTEGER NOT NULL,
+	"borough"	TEXT NOT NULL,
+	"room"	INTEGER NOT NULL,
+	"studio"	INTEGER NOT NULL,
+	"1_bedroom"	INTEGER NOT NULL,
+	"2_bedrooms"	INTEGER NOT NULL,
+	"3_bedrooms"	INTEGER NOT NULL,
+	"4+_bedrooms"	INTEGER NOT NULL,
+	PRIMARY KEY("average_rent_ID")
+);
+COMMIT;
