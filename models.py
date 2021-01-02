@@ -1,5 +1,4 @@
 # Paul Ho
-# This is a new commment
 
 class User(object):
 
