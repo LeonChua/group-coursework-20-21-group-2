@@ -1,5 +1,5 @@
 import pytest
-from searchclass import search
+from models import search
 
 @pytest.fixture
 def input_data():
