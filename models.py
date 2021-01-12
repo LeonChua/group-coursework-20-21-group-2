@@ -112,17 +112,4 @@ class search(object):
 
         return column_order[option]
 
-    def filterSearch(self, data, option):
-        '''Filter search result given option
-        return index of highest option'''
-        column_index = search.option_map(self, option)
-        old = data[1][column_index]
-        row_count = 1
-
-        
-        for i in range(2, len(data)):
-            if data[i][column_index] > old:
-                row_count += 1
-                old = data[i][column_index]
-
-        return row_count
+    
