@@ -1,6 +1,6 @@
 # Ben Li
 # This is a new comment
-
+# This is a new comment
 class Favourites(object):
 
     def __init__(self, area_id, user_id, fav_list):
@@ -25,4 +25,4 @@ class Favourites(object):
 
     # returning the list of favourites to be stored in the user class
     def createFavourites(self):
-        return selfq
+        return self
