@@ -82,6 +82,7 @@ class User(object):
 
 #Mazin Abdulmahmood - Search Class
 class search(object):
+    #Main algorithm yet to be developed
 
     def getResult(self, data, index):
         '''Returns the data from a search result from a
