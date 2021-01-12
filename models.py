@@ -82,7 +82,6 @@ class User(object):
 
 #Mazin Abdulmahmood - Search Class
 class search(object):
-    '''Class Incomplete, missing Algorithm'''
 
     def getResult(self, data, index):
         '''Returns the data from a search result from a
