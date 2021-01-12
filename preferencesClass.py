@@ -30,4 +30,3 @@ class Preferences(object):
     def createPreferences(self):
         return self
 
-    # this is a comment
