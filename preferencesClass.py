@@ -29,3 +29,5 @@ class Preferences(object):
     # returning a preference object to be stored within the user class
     def createPreferences(self):
         return self
+
+    # this is a comment
