@@ -1,6 +1,7 @@
 # Ben Li
 # This is a new comment
 # This is a new comment
+# This is a new comment
 class Favourites(object):
 
     def __init__(self, area_id, user_id, fav_list):
