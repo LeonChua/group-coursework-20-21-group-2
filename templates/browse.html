@@ -10,7 +10,8 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
 
-    
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css' rel='stylesheet' />
 
     <!-- Bootstrap core CSS -->
 <link href="{{ url_for('static', filename='/assets/dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -42,26 +43,17 @@
     <div>
       <h3 class="float-md-start mb-0">Statfreak.</h3>
       <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Home</a>
-        <a class="nav-link" href="{{ url_for('browse') }}">Browse</a>
+        <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+        <a class="nav-link  active" aria-current="page" href="{{ url_for('browse') }}">Browse</a>
         <a class="nav-link" href="{{ url_for('login') }}">Login</a>
       </nav>
     </div>
   </header>
 
   <main class="px-3">
-    <h1>Discover your next home.</h1>
-    <!-- <iframe
-     src='https://api.mapbox.com/styles/v1/mapbox/streets-v11.html?title=true&zoomwheel=false&access_token=pk.eyJ1IjoibWF6YWJkdWwiLCJhIjoiY2trMWh1aXRsMHJhMjJxbzU0eTYzbTI5ZiJ9.DIP735c0I4CbxFHmTtNBCw' width='100%' height='400px'>
-    </iframe>  -->
-    <video autoplay muted loop id="myVideo">
-      <source src="{{ url_for('static', filename='earth.mp4') }}" type="video/mp4">
-    </video>
-    <p class="lead">Starting university soon? Want to find the perfect area? That's what we're here for.</p>
-    <p class="lead">
-    <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">LETS GO</a>
-    </p>
-  </main>
+    <h1>View each borough and its statistics.</h1>
+    {{ div_placeholder | safe }}
+    </main>
 
   <footer class="mt-auto text-white-50">
     <p>COMP0034 2021 Team2</p>
