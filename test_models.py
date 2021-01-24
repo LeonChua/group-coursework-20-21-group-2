@@ -15,15 +15,6 @@ class TestUser:
     def test_email(self):
         assert False
 
-    def test_email(self):
-        assert False
-
-    def test_university(self):
-        assert False
-
-    def test_university(self):
-        assert False
-
     def test_university(self):
         assert False
 
