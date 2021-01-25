@@ -13,9 +13,11 @@ numpy==1.19
 matplotlib==3.3.3
 mccabe==0.6.1
 more-itertools==8.2.0
+openpyxl
 packaging==20.3
 pandas==1.2.1
 pluggy==0.13.1
+plotly_express
 py==1.8.1
 pylint==2.4.4
 pyparsing==2.4.7
@@ -24,3 +26,4 @@ six==1.14.0
 wcwidth==0.1.9
 Werkzeug==1.0.1
 wrapt==1.11.2
+xlrd
