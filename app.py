@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import numpy as np
 import plotly_express as px
-import os
 
 app = Flask(__name__) # creates Flask object from main fcn
 
