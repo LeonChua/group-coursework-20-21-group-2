@@ -72,7 +72,13 @@ except:
 
 fig, axes = plt.subplots(figsize=(12, 6))
 axes.scatter(data[['Median']], data[['Happiness']])
+axes.set_ylim([0, 10]) # Range chosen to better represent results and reflect the options given (0-10)
+axes.set_xlabel('Median Monthly Rent Price (£)')
+axes.set_ylabel('Life Satisfaction (Arbitrary Units from 0-10)')
+# "Monthly Rent Price" more concise than "Median Monthly Rent price"
+axes.set_title('Graph of Life Satisfaction against Monthly Rent Price for each London Borough')
 plt.show()
+"""
 
 fig2, axes2 = plt.subplots(figsize=(12, 6))
 axes2 = data['Median'].plot.bar(x=0, y=2, width=1.0)
@@ -83,3 +89,5 @@ data = data.sort_values(by=['Happiness'], ascending=True)
 fig3, axes3 = plt.subplots(figsize=(12, 6))
 axes3 = data['Happiness'].plot.bar(x=0, y=2, width=1.0)
 plt.show()
+
+"""
