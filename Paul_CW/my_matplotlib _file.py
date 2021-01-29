@@ -77,7 +77,12 @@ axes.set_xlabel('Median Monthly Rent Price (£)')
 axes.set_ylabel('Life Satisfaction (Arbitrary Units from 0-10)')
 # "Monthly Rent Price" more concise than "Median Monthly Rent price"
 axes.set_title('Graph of Life Satisfaction against Monthly Rent Price for each London Borough')
+# https://stackoverflow.com/questions/8209568/how-do-i-draw-a-grid-onto-a-plot-in-python
+axes.xaxis.grid()
+axes.yaxis.grid()
 plt.show()
+# in your report, explain how you chose your graph (using interactive char chooser), and how you avoided chartjunk
+# why did you not use a line graph?
 """
 
 fig2, axes2 = plt.subplots(figsize=(12, 6))
