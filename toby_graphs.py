@@ -14,11 +14,9 @@ df_housing_prices = pd.read_sql('SELECT * FROM housing_prices;', conn, index_col
 df1 = df_housing_density[['Population_per_square_kilometre']]
 df2 = df_housing_prices
 del df2['area_name']
-
-
 df = pd.merge(df1, df2, on='area_id')
 
-
+# removing unwanted rows
 df = df[df.room_median_price != '']
 
 
@@ -41,5 +39,6 @@ ax.set_ylim([0, 5000])
 
 labels = 'room_median_price' , 'studio_median_price', 'one_bed_median_price', 'two_bed_median_price', 'three_bed_median_price', 'four_plus_bed_median_price'
 plt.legend(labels=labels)
-
+plt.savefig('matplotlib_graph_toby.jpg')
 plt.show()
+
