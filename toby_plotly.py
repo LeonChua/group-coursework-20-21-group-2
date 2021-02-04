@@ -17,5 +17,7 @@ df['Mean_last_24_months'] = mean
 
 df = df[df.MinorText == (df.iloc[1, 1] or df.iloc[3, 1] or df.iloc[5,1] or df.iloc[8,1] or df.iloc[22,1] or df.iloc[31,1] or df.iloc[34,1] or df.iloc[36,1] or df.iloc[37,1] or df.iloc[40,1] or df.iloc[45,1] or df.iloc[46,1])]
 
+fig = px.scatter(df, x='MinorText', y='Mean_last_24_months')
+fig.show()
 
 print(df.head())
