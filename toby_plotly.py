@@ -2,21 +2,20 @@ import pandas as pd
 import sqlite3
 import plotly.express as px
 
-#plotting the population density vs the price of various rooms
+#plotting the crime rates for different crimes
 
 #connecting to sqlite database
 conn = sqlite3.connect('database.sqlite')
-df_housing_density = pd.read_sql('SELECT * FROM housing_density_borough;', conn, index_col='area_id')
-df_housing_prices = pd.read_sql('SELECT * FROM housing_prices;', conn, index_col='area_id')
+df_crime = pd.read_sql('SELECT * FROM crime_rates_per_borough;', conn, index_col=None)
 
-#creating table which has area id, population per square kilometre, housing prices
-df1 = df_housing_density[['Population_per_square_kilometre']]
-df2 = df_housing_prices
-del df2['area_name']
-df = pd.merge(df1, df2, on='area_id')
+# only want certain crimes that relate to the students as we don't need to know all crimes committed
 
-# removing unwanted rows
-df = df[df.room_median_price != '']
+mean = df_crime.mean(axis=1)
 
-fig = px.scatter(df, x="Population_per_square_kilometre", y="one_bed_median_price", trendline="ols")
-fig.show()
+df = df_crime.iloc[:,:3]
+df['Mean_last_24_months'] = mean
+
+df = df[df.MinorText == (df.iloc[1, 1] or df.iloc[3, 1] or df.iloc[5,1] or df.iloc[8,1] or df.iloc[22,1] or df.iloc[31,1] or df.iloc[34,1] or df.iloc[36,1] or df.iloc[37,1] or df.iloc[40,1] or df.iloc[45,1] or df.iloc[46,1])]
+
+
+print(df.head())
