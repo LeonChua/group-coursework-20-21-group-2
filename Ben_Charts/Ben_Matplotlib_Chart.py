@@ -63,10 +63,11 @@ p6 = plt.bar(ind, Sexual, bottom=Robbery)
 p7 = plt.bar(ind, Theft, bottom=Sexual)
 p8 = plt.bar(ind, Violence, bottom=Theft)
 
+plt.title('What are the differences in the types of crime committed between two different boroughs?')
 plt.xlabel('Boroughs of London')
 plt.ylabel('Number of Crimes')
 plt.xticks(ind, boroughs, rotation='vertical')
-plt.yticks(np.arange(0, 50000, step=5000))
+plt.yticks(np.arange(0, 45000, step=5000))
 plt.legend((p1[0], p2[0], p3[0], p4[0], p5[0], p6[0], p7[0], p8[0]), ('Arson and Criminal Damage', 'Burglary',
                                                                       'Possession of Weapons', 'Public Order Offences',
                                                                       'Robbery', 'Sexual Offences', 'Theft',
