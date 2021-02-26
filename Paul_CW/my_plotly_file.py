@@ -91,6 +91,8 @@ fig.update_xaxes(
     ticktext= ["%s<br>%d" % (l, w) for l, w in zip([s + " Crimes" for s in boroughs], widths)] # add crimes to bar labels for graph clarity
 )
 
+fig.update_yaxes(ticksuffix="%")
+
 fig.update_xaxes(range=[0,widths.sum()])
 fig.update_yaxes(range=[0,100])
 
