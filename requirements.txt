@@ -3,6 +3,9 @@ atomicwrites==1.3.0
 attrs==19.3.0
 click==7.1.2
 colorama==0.4.3
+dash
+dash_core_components
+dash_html_components
 Flask==1.1.2
 isort==4.3.21
 itsdangerous==1.1.0
@@ -14,6 +17,7 @@ matplotlib==3.3.3
 mccabe==0.6.1
 more-itertools==8.2.0
 openpyxl
+os
 packaging==20.3
 pandas==1.2.1
 pluggy==0.13.1
