@@ -1,5 +1,4 @@
 import plotly.express as px
-# Note to self - should I remove the legend?
 import plotly.graph_objects as go
 import pandas as pd
 import numpy as np
