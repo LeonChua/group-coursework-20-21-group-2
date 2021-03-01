@@ -1,10 +1,19 @@
-import plotly.express as px
+# animate existing plotly chart by year, and design intuitive borough selection
+
+# imports necessary for dash app
+import dash
+import dash_core_components as dcc
+import dash_html_components as html
+import os
+
+# imports necessary for plotting
 import plotly.graph_objects as go
 import pandas as pd
 import numpy as np
 
-# Load the file into a pandas DataFrame
-crimeFile = '../Approved_datasets/MPS Borough Level Crime (most recent 24 months) (1).csv'
+# Load data
+DATA_DIRECTORY = "Approved_datasets"
+crimeFile = os.path.join("..", DATA_DIRECTORY, 'MPS Borough Level Crime (most recent 24 months) (1).csv')
 
 df = pd.read_csv(crimeFile, header=0)
 print(df)
@@ -31,7 +40,8 @@ total3 = data3.sum()
 # widths = total number of cases
 widths = np.array([total1, total2, total3])
 
-# convert dataframes into percentages https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.divide.html
+# convert dataframes into percentages for x axis
+# https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.divide.html
 df1[date] = df1[date].truediv(total1)
 df2[date] = df2[date].truediv(total2)
 df3[date] = df3[date].truediv(total3)
@@ -40,6 +50,7 @@ df3[date] = df3[date].truediv(total3)
 print(df1)
 
 # the data for October 2020 adapted from https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html
+# Put filtered data together into one frame
 frames = [df1, df2, df3]
 data = pd.concat(frames)
 
@@ -53,9 +64,8 @@ data.set_index(['MajorText', 'MinorText'])
 crimes = data['MajorText'].drop_duplicates()
 crimes = crimes.values.tolist()
 
-# graph from https://plotly.com/python/bar-charts/
-#fig = px.bar(data, x="LookUp_BoroughName", y='202010', color="MajorText", title="Wide-Form Input")
-#fig.show()
+# Make graph
+# graph adapted from https://plotly.com/python/bar-charts/
 
 fig = go.Figure()
 for crime in crimes:
@@ -103,4 +113,18 @@ fig.update_layout(
     uniformtext=dict(mode="hide", minsize=10),
 )
 
-fig.show()
+# Adapted from week 4 exercises
+# create dash app
+app = dash.Dash(__name__)
+
+# Create the app layout and add the marimekko chart to it
+app.layout = html.Div(children=[
+
+    html.H1('Plotly dash charts'),
+
+    dcc.Graph(figure=fig)
+])
+
+# Run the web app server
+if __name__ == '__main__':
+    app.run_server(debug=False, port=8050)
