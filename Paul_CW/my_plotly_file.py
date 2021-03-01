@@ -51,7 +51,10 @@ data.set_index(['MajorText', 'MinorText'])
 # make a list of all "major" crimes from dataframe
 
 crimes = data['MajorText'].drop_duplicates()
+print(crimes)
 crimes = crimes.values.tolist()
+
+print(crimes)
 
 # graph from https://plotly.com/python/bar-charts/
 #fig = px.bar(data, x="LookUp_BoroughName", y='202010', color="MajorText", title="Wide-Form Input")
