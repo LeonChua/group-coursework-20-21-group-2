@@ -96,3 +96,5 @@ axes3 = data['Happiness'].plot.bar(x=0, y=2, width=1.0)
 plt.show()
 
 """
+
+fig.savefig('chart1.png', transparent=True, bbox_inches='tight')

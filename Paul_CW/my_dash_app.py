@@ -9,6 +9,7 @@ import os
 
 from Paul_CW.my_dash_app_chart import CrimeChart
 from Paul_CW.my_dash_app_data import CrimeData
+from Paul_CW.my_dash_app_px_chart2 import CrimePlotlyChart
 
 # Run dataset preparation program
 
@@ -20,7 +21,10 @@ data.process_data(area1, area2, area3)
 
 # Build figures
 cr = CrimeChart(data)
-fig1 = cr.create_chart()
+fig3 = cr.create_chart()
+
+crpx = CrimePlotlyChart()
+fig2 = crpx.create_px_chart()
 
 # Adapted from week 4 + 5 exercises
 # create dash app
@@ -32,12 +36,18 @@ app.layout = dbc.Container(fluid=True, children=[
     # Adapted from week 5
     dbc.Row([
         dbc.Col(children=[
-            html.H2('Chart 1')
+            html.H2('Chart 1'),
+            html.Img(src="chart1.png")
         ])
     ]),
     dbc.Row([
         dbc.Col(children=[
             html.H2('Chart 2')
+        ])
+    ]),
+    dbc.Row([
+        dbc.Col(children=[
+            dcc.Graph(figure=fig2),
         ])
     ]),
     dbc.Row([
@@ -79,9 +89,9 @@ from dash.dependencies import Output, Input
 def render_output_panel(area_select1, area_select2, area_select3):
     data.process_data(area_select1, area_select2, area_select3)
     cr = CrimeChart(data)
-    fig1 = cr.create_chart()
+    fig3 = cr.create_chart()
     panel = html.Div([
-        dcc.Graph(figure=fig1),
+        dcc.Graph(figure=fig3),
 
     ])
     return panel
