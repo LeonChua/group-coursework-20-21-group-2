@@ -97,4 +97,4 @@ plt.show()
 
 """
 
-fig.savefig('chart1.png', transparent=True, bbox_inches='tight')
+fig.savefig('chart1.jpeg', transparent=True, bbox_inches='tight')

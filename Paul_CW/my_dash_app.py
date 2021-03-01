@@ -5,6 +5,7 @@ import dash
 import dash_core_components as dcc
 import dash_bootstrap_components as dbc
 import dash_html_components as html
+import base64
 import os
 
 from Paul_CW.my_dash_app_chart import CrimeChart
@@ -26,6 +27,10 @@ fig3 = cr.create_chart()
 crpx = CrimePlotlyChart()
 fig2 = crpx.create_px_chart()
 
+# code from #https://github.com/plotly/dash/issues/71 (continued below)
+image_filename = 'chart1.png' # replace with your own image
+encoded_image = base64.b64encode(open(image_filename, 'rb').read())
+
 # Adapted from week 4 + 5 exercises
 # create dash app
 app = dash.Dash(external_stylesheets=[dbc.themes.LUX])
@@ -37,7 +42,8 @@ app.layout = dbc.Container(fluid=True, children=[
     dbc.Row([
         dbc.Col(children=[
             html.H2('Chart 1'),
-            html.Img(src="chart1.png")
+            # code from https://github.com/plotly/dash/issues/71
+            html.Img(src='data:image/png;base64,{}'.format(encoded_image))
         ])
     ]),
     dbc.Row([
