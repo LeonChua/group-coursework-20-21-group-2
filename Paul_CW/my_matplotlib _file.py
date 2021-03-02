@@ -7,6 +7,7 @@ wellbeing = '../Approved_datasets/personal-well-being-borough (2).xlsx'
 
 df = pd.read_excel(rentFile, sheet_name='Table2.7', skiprows=6)
 
+#### DATA PROCESSING
 # Show the columns in the spreadsheet and the first few rows of data
 print(df.columns)
 print(df)
@@ -70,6 +71,9 @@ try:
 except:
     print("No City of London")
 
+
+#### PLOT DATA
+
 fig, axes = plt.subplots(figsize=(12, 6))
 axes.scatter(data[['Median']], data[['Happiness']])
 axes.set_ylim([0, 10]) # Range chosen to better represent results and reflect the options given (0-10)
@@ -96,5 +100,5 @@ axes3 = data['Happiness'].plot.bar(x=0, y=2, width=1.0)
 plt.show()
 
 """
-
+# export figure to png/jpeg
 fig.savefig('chart1.jpeg', transparent=True, bbox_inches='tight')

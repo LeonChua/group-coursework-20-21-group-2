@@ -11,6 +11,7 @@ import os
 from Paul_CW.my_dash_app_chart import CrimeChart
 from Paul_CW.my_dash_app_data import CrimeData
 from Paul_CW.my_dash_app_px_chart2 import CrimePlotlyChart
+from Paul_CW.my_plotly_go_file import WellbeingChart
 
 # Run dataset preparation program
 
@@ -26,6 +27,10 @@ fig3 = cr.create_chart()
 
 crpx = CrimePlotlyChart()
 fig2 = crpx.create_px_chart()
+
+# Build Radar Chart
+wb = WellbeingChart()
+fig4 = wb.create_radar_chart("Brent", "Camden")
 
 # code from #https://github.com/plotly/dash/issues/71 (continued below)
 image_filename = 'chart1.png' # replace with your own image
@@ -43,7 +48,9 @@ app.layout = dbc.Container(fluid=True, children=[
         dbc.Col(children=[
             html.H2('Chart 1'),
             # code from https://github.com/plotly/dash/issues/71
-            html.Img(src='data:image/png;base64,{}'.format(encoded_image))
+            dbc.FormGroup([
+                html.Img(src='chart1.png')
+            ])
         ])
     ]),
     dbc.Row([
@@ -85,6 +92,33 @@ app.layout = dbc.Container(fluid=True, children=[
 
         ]),
     ]),
+    dbc.Row([
+        dbc.Col(children=[
+            html.H2('Chart 2')
+        ])
+    ]),
+    dbc.Row([
+        # Add the first column here. This is for the area selector and the statistics panel.
+        dbc.Col(width=3, children=[
+            dbc.FormGroup([
+                html.H4("Select Areas"),
+                # dash-core-components (dcc) provides a dropdown
+                dcc.Dropdown(id="area_select_radar1", options=[{"label": x, "value": x} for x in wb.allareas],
+                             value="Barking and Dagenham"),
+                dcc.Dropdown(id="area_select_radar2", options=[{"label": x, "value": x} for x in wb.allareas],
+                             value="Camden"),
+            ]),
+
+        ]),
+        # Add the second column here. This is for the figure.
+        dbc.Col(width=9, children=[
+
+            html.H4("Radar Chart"),
+            html.Div(id="radar-chart"),
+            #dcc.Graph(figure=fig1),
+
+        ]),
+    ]),
 ])
 
 from dash.dependencies import Output, Input
@@ -98,6 +132,16 @@ def render_output_panel(area_select1, area_select2, area_select3):
     fig3 = cr.create_chart()
     panel = html.Div([
         dcc.Graph(figure=fig3),
+
+    ])
+    return panel
+
+@app.callback(Output("radar-chart", "children"), [Input("area_select_radar1", "value"),
+                                                   Input("area_select_radar2", "value")])
+def render_output_panel(area_select_radar1, area_select_radar2):
+    fig4 = wb.create_radar_chart(area_select_radar1, area_select_radar2)
+    panel = html.Div([
+        dcc.Graph(figure=fig4),
 
     ])
     return panel
